@@ -1,1 +1,28 @@
-<p>por-capital works!</p>
+
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h2>Por Capital</h2>
+    <hr>
+    
+    <div class="row">
+        <div class="col">
+            <!-- (onEnter) escucha cuando se emite el evento y llama buscar en el papa -->
+            <app-pais-input (onEnter)="buscar( $event )"
+                            placeholder="Buscar Capital...">
+                
+            </app-pais-input>
+        </div>
+    </div>
+    
+    <hr>
+    
+</div>
+
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontró nada por el término de busqueda {{ termino}}.
+</div>
+
+<div *ngIf="!hayError && paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-table [paises]="paises"></app-pais-table>
+    </div>
+</div>
